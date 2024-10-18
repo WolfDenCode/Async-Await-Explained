@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async Fetch Example with TradingView Widget</title>
+  </head>
+  <body>
+    <h1>Live Stock Data Fetch with Asynchronous JavaScript</h1>
+
+    <select id="ticker-switcher">
+      <option value="AAPL">Apple (AAPL)</option>
+      <option value="GOOGL">Google (GOOGL)</option>
+      <option value="AMZN">Amazon (AMZN)</option>
+    </select>
+
+    <!-- Display fetched stock data -->
+    <div id="stock-data"></div>
+
+    <!-- TradingView Widget -->
+    <div class="tradingview-widget-container">
+      <div id="tradingview_abcde"></div>
+      <script
+        type="text/javascript"
+        src="https://s3.tradingview.com/tv.js"
+      ></script>
+      <script type="text/javascript">
+        new TradingView.widget({
+          width: 980,
+          height: 610,
+          symbol: "NASDAQ:AAPL", // The same stock as in fetch call
+          interval: "D",
+          timezone: "Etc/UTC",
+          theme: "dark",
+          style: "1",
+          locale: "en",
+          toolbar_bg: "#f1f3f6",
+          enable_publishing: false,
+          allow_symbol_change: true,
+          container_id: "tradingview_abcde",
+        });
+      </script>
+    </div>
+
+    <script src="dropdown_fetch.js"></script>
+  </body>
+</html>
