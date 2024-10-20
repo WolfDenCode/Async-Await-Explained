@@ -1,4 +1,5 @@
 const apiKey = "cs968j1r01qoa9gbgiugcs968j1r01qoa9gbgiv0"; // Replace with your Finnhub API key
+const stockSymbol = "AAPL";
 
 // Function to fetch stock data using a callback
 function fetchStockDataWithCallback(stock, callback) {

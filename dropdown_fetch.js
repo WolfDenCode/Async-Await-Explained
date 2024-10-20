@@ -19,19 +19,20 @@ function updateTradingViewWidget(symbol) {
 }
 
 // Function to fetch stock data using Promises
-function fetchStockDataWithPromises(stock) {
+async function fetchStockDataWithPromises(stock) {
   const url = `https://finnhub.io/api/v1/quote?symbol=${stock}&token=${apiKey}`;
+  try {
+    // Asynchronous API call
+    const response = await fetch(url);
 
-  return fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById(
-        "stock-data"
-      ).innerText = `Current Price of ${stock}: ${data.c} USD`;
-    })
-    .catch((error) => {
-      console.error("Error fetching stock data:", error);
-    });
+    // Parse the JSON response
+    const data = await response.json();
+    document.getElementById(
+      "stock-data"
+    ).innerText = `Current Price of ${stock}: ${data.c} USD`;
+  } catch (error) {
+    console.error("Error fetching stock data:", error);
+  }
 }
 
 // Ticker switcher
